@@ -1,6 +1,8 @@
-# autoinstall
-Auto Install Script
-Autoinstall Script untuk server linux
+# Autoinstall Script
+
+Autoinstall Script for Centos 7
+
+## Usage
 
 #### Install ProFTPD
 ```
