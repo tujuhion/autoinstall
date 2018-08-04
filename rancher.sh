@@ -1,8 +1,9 @@
 yum remove docker docker-common docker-selinux docker-engine
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce
+yum -y install docker-ce
 systemctl start docker
-docker run -d --restart=unless-stopped -p 8280:8280 rancher/server:stable
-firewall-cmd --permanent --add-port=8280/tcp
+firewall-cmd --permanent --add-port=8080/tcp
 firewall-cmd --reload
+docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
+
