@@ -4,3 +4,5 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum install docker-ce
 systemctl start docker
 docker run -d --restart=unless-stopped -p 8280:8280 rancher/server:stable
+firewall-cmd --permanent --add-port=8280/tcp
+firewall-cmd --reload
