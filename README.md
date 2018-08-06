@@ -8,3 +8,7 @@ Autoinstall Script for Centos 7
 ```
 bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/proftpd.sh )
 ```
+#### Install Rancher
+```
+bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/rancher.sh )
+```
