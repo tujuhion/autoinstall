@@ -1,3 +1,5 @@
+#!/bin/bash
+
 yum -y install epel-release
 yum -y install proftpd
 sed -i "s/ProFTPD server/$HOSTNAME/g" /etc/proftpd.conf
