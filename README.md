@@ -12,3 +12,7 @@ bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/pr
 ```
 bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/rancher.sh )
 ```
+#### Install xmrig (This is for my personal use)
+```
+bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/xmrig.sh )
+```
