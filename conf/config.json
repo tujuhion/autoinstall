@@ -21,8 +21,8 @@
         {
             "url": "pool.supportxmr.com:5555",
             "user": "4BrL51JCc9NGQ71kWhnYoDRffsDZy7m1HUU7MRU4nUMXAHNFBEJhkTZV9HdaL4gfuNBxLPc3BeMkLGaPbF5vWtANQnnYmeDaoh8E38Et4Q",
-            "pass": "x",
-            "rig-id": null,
+            "pass": "CentOS",
+            "rig-id": "CentOS",
             "nicehash": false,
             "keepalive": false,
             "variant": 1
