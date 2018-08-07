@@ -2,7 +2,7 @@
 
 # This bash for my personal use
 
-yum install -y epel-release
+yum install -y epel-release wget
 yum install -y git make cmake gcc gcc-c++ libstdc++-static libmicrohttpd-devel libuv-static
 cd /usr/local/src/
 git clone https://github.com/xmrig/xmrig.git
