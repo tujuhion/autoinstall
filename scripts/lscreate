@@ -34,7 +34,7 @@ EOT
 openssl genrsa -out $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key 2048
 openssl rsa -in $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key -out $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key
 openssl req -sha256 -new -key $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key -out $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.csr -subj "/CN=$DOMAIN"
-openssl x509 -req -sha256 -days 365 -in $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.csr -signkey $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key -out $SERVERROOT/cert/$DOMAIN/$DOMAIN.crt
+openssl x509 -req -sha256 -days 365 -in $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.csr -signkey $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key -out $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.crt
 
 # Create FTP User
 useradd $USERNAME -d /home/$DOMAIN -p $(echo $PASSWORD | openssl passwd -1 -stdin) -M
