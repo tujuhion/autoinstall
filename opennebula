@@ -1,0 +1,24 @@
+#!/bin/bash
+
+yum -y install epel-release
+yum -y update
+cat << EOT > /etc/yum.repos.d/opennebula.repo
+[opennebula]
+name=opennebula
+baseurl=https://downloads.opennebula.org/repo/5.6/CentOS/7/x86_64
+enabled=1
+gpgkey=https://downloads.opennebula.org/repo/repo.key
+gpgcheck=1
+EOT
+
+firewall-cmd --add-port=9869/tcp --permanent
+firewall-cmd --reload
+
+setenforce 0
+sed -i 's/(^SELINUX=).*/SELINUX=disabled/' /etc/selinux/config
+
+sudo yum -y install opennebula opennebula-server \
+opennebula-sunstone opennebula-ruby opennebula-gate \
+opennebula-flow
+
+/usr/share/one/install_gems
