@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo Domain name (Without www):
+echo "Domain name (Without www):"
 read DOMAIN
 echo FTP Username :
 read USERNAME
@@ -11,6 +11,7 @@ HOMEDIR="/home/$DOMAIN"
 SERVERROOT="/usr/local/lsws"
 
 # Create directory
+mkdir $HOMEDIR
 mkdir $HOMEDIR/{html,logs}
 mkdir $SERVERROOT/conf/vhosts/$DOMAIN
 mkdir $SERVERROOT/cert/$DOMAIN
