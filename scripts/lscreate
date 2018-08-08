@@ -18,10 +18,12 @@ mkdir $SERVERROOT/conf/cert/$DOMAIN
 
 # Create file
 touch $HOMEDIR/html/.htaccess
-cp $SERVERROOT/conf/templates/incl.conf $SERVERROOT/conf/inclconf/$DOMAIN.conf
+cp $SERVERROOT/conf/templates/incl.conf $SERVERROOT/conf/templates/$DOMAIN.conf
 cp $SERVERROOT/conf/templates/vhconf.conf $SERVERROOT/conf/vhosts/$DOMAIN/vhconf.conf
-sed -i "s/##DOMAIN##/$DOMAIN/g" $SERVERROOT/conf/inclconf/$DOMAIN.conf
+sed -i "s/##DOMAIN##/$DOMAIN/g" $SERVERROOT/conf/templates/$DOMAIN.conf
 sed -i "s/##DOMAIN##/$DOMAIN/g" $SERVERROOT/conf/vhosts/$DOMAIN/vhconf.conf
+sed -i "s/defdomain */defdomain * $DOMAIN/g" SERVERROOT/conf/httpd_config.conf
+sed -i "s/## END ALL VHOST ##/r $SERVERROOT/conf/templates/$DOMAIN.conf/g" SERVERROOT/conf/httpd_config.conf
 
 cat << EOT > $HOMEDIR/html/index.php
 <?php
