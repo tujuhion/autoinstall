@@ -47,7 +47,6 @@ wget -O /usr/local/lsws/admin/conf/admin_config.conf https://raw.githubuserconte
 chown lsadm:lsadm /usr/local/lsws/conf/vhosts/defdomain/vhconf.conf
 chown lsadm:lsadm /usr/local/lsws/conf/httpd_config.conf
 chown lsadm:lsadm /usr/local/lsws/admin/conf/admin_config.conf
-chown -R nobody:nobody /home/defdomain/html/
 touch /home/defdomain/html/.htaccess
 
 cat << EOT > /home/defdomain/html/index.php
@@ -55,6 +54,8 @@ cat << EOT > /home/defdomain/html/index.php
 echo "Its Works!";
 ?>php
 EOT
+
+chown -R nobody:nobody /home/defdomain/html/
 
 firewall-cmd --zone=public --permanent --add-port=21/tcp
 firewall-cmd --zone=public --permanent --add-port=80/tcp
