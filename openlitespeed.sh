@@ -52,7 +52,7 @@ touch /home/defdomain/html/.htaccess
 cat << EOT > /home/defdomain/html/index.php
 <?php
 echo "Its Works!";
-?>php
+?>
 EOT
 
 chown -R nobody:nobody /home/defdomain/html/
