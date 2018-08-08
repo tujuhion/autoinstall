@@ -32,7 +32,7 @@ yum -y install openlitespeed
 yum -y install MariaDB-server MariaDB-client
 
 # Install PHP 72
-RUN yum -y install lsphp72 lsphp72-common lsphp72-mysqlnd lsphp72-process lsphp72-gd lsphp72-mbstring lsphp72-mcrypt lsphp72-opcache lsphp72-bcmath lsphp72-pdo lsphp72-xml lsphp72-json lsphp72-zip lsphp72-xmlrpc lsphp72-pecl-mcrypt
+yum -y install lsphp72 lsphp72-common lsphp72-mysqlnd lsphp72-process lsphp72-gd lsphp72-mbstring lsphp72-mcrypt lsphp72-opcache lsphp72-bcmath lsphp72-pdo lsphp72-xml lsphp72-json lsphp72-zip lsphp72-xmlrpc lsphp72-pecl-mcrypt
 
 #Setting Up
 mv -f /usr/local/lsws/conf/vhosts/Example/ /usr/local/lsws/conf/vhosts/defdomain/
@@ -49,6 +49,7 @@ chown lsadm:lsadm /usr/local/lsws/conf/httpd_config.conf
 chown lsadm:lsadm /usr/local/lsws/admin/conf/admin_config.conf
 chown -R nobody:nobody /home/defdomain/html/
 touch /home/defdomain/html/.htaccess
+
 cat << EOT > /home/defdomain/html/index.php
 <?php
 echo "Its Works!";
@@ -67,7 +68,7 @@ mysql -uroot -v -e "use mysql;update user set Password=PASSWORD('$ROOTSQLPWD') w
 
 # Save Password root MariaDB
 cat << EOT > /root/.MariaDB
-ROOTSQLPWD
+$ROOTSQLPWD
 EOT
 
 systemctl enable proftpd
