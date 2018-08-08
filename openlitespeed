@@ -2,7 +2,6 @@
 
 # Random Password Generator
 TEMPRANDSTR=
-
 function getRandPassword
 {
     dd if=/dev/urandom bs=8 count=1 of=/tmp/randpasswdtmpfile >/dev/null 2>&1
@@ -66,6 +65,10 @@ firewall-cmd --reload
 systemctl start mariadb && systemctl start proftpd && /usr/local/lsws/bin/lswsctrl start && 
 mysql -uroot -v -e "use mysql;update user set Password=PASSWORD('$ROOTSQLPWD') where user='root'; flush privileges;"
 
+# Save Password root MariaDB
+cat << EOT > /root/.MariaDB
+ROOTSQLPWD
+EOT
 
 systemctl enable proftpd
 systemctl enable mariadb
