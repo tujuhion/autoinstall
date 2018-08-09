@@ -9,6 +9,7 @@ read PASSWORD
 
 HOMEDIR="/home/$DOMAIN"
 SERVERROOT="/usr/local/lsws"
+DOMAINCONF="$SERVERROOT/conf/templates/$DOMAIN.conf"
 
 # Create directory
 mkdir $HOMEDIR
@@ -22,15 +23,14 @@ cp $SERVERROOT/conf/templates/incl.conf $SERVERROOT/conf/templates/$DOMAIN.conf
 cp $SERVERROOT/conf/templates/vhconf.conf $SERVERROOT/conf/vhosts/$DOMAIN/vhconf.conf
 sed -i "s/##DOMAIN##/$DOMAIN/g" $SERVERROOT/conf/templates/$DOMAIN.conf
 sed -i "s/##DOMAIN##/$DOMAIN/g" $SERVERROOT/conf/vhosts/$DOMAIN/vhconf.conf
-sed -i "s/defdomain */defdomain * $DOMAIN/g" SERVERROOT/conf/httpd_config.conf
-sed -i "s/## END ALL VHOST ##/r $SERVERROOT/conf/templates/$DOMAIN.conf/g" SERVERROOT/conf/httpd_config.conf
-
+#sed -i "s/defdomain[[:space:]][*]/$DOMAIN defdomain */g" $SERVERROOT/conf/httpd_config.conf
+sed -i "s/##END_ALL_VHOST##/cat \/usr\/local\/lsws\/conf\/templates\/$DOMAIN.conf/e" $SERVERROOT/conf/httpd_config.conf
+rm -f $DOMAINCONF
 cat << EOT > $HOMEDIR/html/index.php
 <?php
 echo "Its Works!";
 ?>
 EOT
-
 
 # Generate Cert
 openssl genrsa -out $SERVERROOT/conf/cert/$DOMAIN/$DOMAIN.key 2048
