@@ -16,7 +16,4 @@ bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/ra
 ```
 bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/xmrig.sh )
 ```
-#### Install Openlitespeed
-```
-bash <( curl -k https://raw.githubusercontent.com/tujuhion/autoinstall/master/openlitespeed.sh )
-```
+
